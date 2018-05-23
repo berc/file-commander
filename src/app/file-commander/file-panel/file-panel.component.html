@@ -1,0 +1,98 @@
+<mat-toolbar>
+  <mat-icon *ngIf="canNavigateUp" class="pointer" (click)="navigateUp()">
+    arrow_back
+  </mat-icon>
+  <span class="panel-path">
+    {{path || 'Files'}}
+  </span>
+  <span class="spacer"></span>
+  <mat-icon class="side-menu pointer" (click)="selectListView()">
+    list
+  </mat-icon>
+  <mat-icon class="side-menu pointer" (click)="selectTalesView()">
+    view_module
+  </mat-icon>
+  <mat-icon class="side-menu pointer" (click)="openNewFolderDialog()">
+    create_new_folder
+  </mat-icon>
+</mat-toolbar>
+
+<div class="container"
+      fxFlex fxLayout="row"
+      fxLayoutAlign="space-between stretch">
+
+  <div fxLayout="{{viewType === ViewTypeEnum.LIST ? 'column nowrap' : 'row wrap'}}"
+        fxLayout.xs="column"
+        fxLayoutAlign="{{viewType === ViewTypeEnum.LIST ? '' : 'center'}}"
+        fxLayoutGap="{{viewType === ViewTypeEnum.LIST ? '' : '10px'}}"
+        class="container__list-tiles-flex">
+
+    <div fxFlex="{{viewType === ViewTypeEnum.LIST ? '40px' : '140px'}}" 
+          *ngFor="let item of fileItems"
+          class=file-or-folder
+          [ngClass]="{'text-align-left': viewType === ViewTypeEnum.LIST,
+            'max-item-height': viewType !== ViewTypeEnum.LIST,
+            'pointer': item.isFolder}">
+      <span [matMenuTriggerFor]="rootMenu" 
+            [matMenuTriggerData]="{item: item}" 
+            #menuTrigger="matMenuTrigger">
+      </span>
+      <div  fxLayout="{{viewType === ViewTypeEnum.LIST ? 'row nowrap' : 'column wrap'}}" 
+            fxLayoutAlign="space-between center" 
+            (click)="navigateDown(item)" 
+            (contextmenu)="openMenu($event, menuTrigger)">
+
+        <mat-icon color="primary" 
+                  class="pointer"
+                  [ngClass]="{'file-or-folder-icon-tale': viewType === ViewTypeEnum.TALES,
+                    'file-or-folder-icon-list': viewType === ViewTypeEnum.LIST}">
+          {{item.isFolder ? 'folder' : 'insert_drive_file'}}
+        </mat-icon>
+        <span class="text-ellipsis">{{item.name}}</span>
+        <span class="text-ellipsis">{{item.isFolder ? '[folder]' : '[file]'}}</span>
+        
+        <span class="side-menu-container" [ngClass]="{'side-menu-container--list': viewType === ViewTypeEnum.LIST}">
+          <span class="spacer"></span>
+          <mat-icon title="Move To Other Side" class="side-menu pointer" (click)="moveToOtherSide(item, $event)">reply</mat-icon>
+          <mat-icon title="Copy To Other Side" class="side-menu pointer" (click)="copyToOtherSide(item, $event)">file_copy</mat-icon>
+          <mat-icon title="Rename" class="side-menu pointer" (click)="openRenameDialog(item, $event)">edit</mat-icon>
+          <mat-icon title="Delete" class="side-menu pointer" (click)="deleteItem(item, $event)">delete</mat-icon>
+        </span>
+
+        <mat-menu #rootMenu="matMenu" [overlapTrigger]="false">
+          <ng-template matMenuContent let-item="item">
+            <button mat-menu-item [matMenuTriggerFor]="moveToMenu" [matMenuTriggerData]="{self: item}">
+              <mat-icon>open_with</mat-icon>
+              <span>Move To</span>
+            </button>
+            <button mat-menu-item (click)="moveToOtherSide(item, $event)">
+              <mat-icon>add_box</mat-icon>
+              <span>Move To Other Side</span>
+            </button>
+            <button mat-menu-item (click)="copyToOtherSide(item, $event)">
+              <mat-icon>reply</mat-icon>
+              <span>Copy To Other Side</span>
+            </button>
+            <button mat-menu-item (click)="openRenameDialog(item, $event)">
+              <mat-icon>edit</mat-icon>
+              <span>Rename</span>
+            </button>
+            <button mat-menu-item (click)="deleteItem(item, $event)">
+              <mat-icon>delete</mat-icon>
+              <span>Delete</span>
+            </button>
+          </ng-template>
+        </mat-menu>
+        
+        <mat-menu #moveToMenu="matMenu">
+          <ng-template matMenuContent let-self="self">
+            <ng-container *ngFor="let item of clearFolderItems(self)">
+              <button *ngIf="item.id !== self.id" mat-menu-item (click)="moveItem(self, item)">{{item.name}}</button>
+            </ng-container>
+          </ng-template>
+        </mat-menu>
+
+      </div>
+    </div>
+  </div>
+</div>

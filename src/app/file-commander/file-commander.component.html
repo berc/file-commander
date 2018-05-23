@@ -1,0 +1,45 @@
+<div fxLayout
+     fxLayout.xs="column"
+     fxLayoutAlign="center"
+     fxLayoutGap="10px"
+     fxLayoutGap.xs="0"
+     class="container">
+  <mat-card class="file-commander"
+            fxFlex="50%">
+    <ds-file-panel  *ngIf="panelLeftMeta"
+                    [fileItems]="panelLeftMeta?.currentItems"
+                    [folderItems]="panelLeftMeta?.allFolders"
+                    [path]="panelLeftMeta?.currentPath" 
+                    [canNavigateUp]="panelLeftMeta?.canNavigateUp"
+
+                    (folderAdded)="onAddFolder(panelLeftMeta.id, $event)"
+                    (itemRemoved)="onRemoveItem(panelLeftMeta.id, $event)" 
+                    (goDown)="onGoToFolder(panelLeftMeta.id, $event)" 
+                    (goUp)="onGoUp(panelLeftMeta.id)" 
+                    (itemRenamed)="onRenameItem(panelLeftMeta.id, $event)"
+                    (itemMoved)="onMoveItem(panelLeftMeta.id, $event)"
+                    (itemRenamed)="onRenameItem(panelLeftMeta.id, $event)"
+                    (itemMoved)="onMoveItem(panelLeftMeta.id, $event)"
+                    (itemCopiedToOtherSide)="onCopyToOtherSide(panelLeftMeta.id, $event)"
+                    (itemMovedToOtherSide)="onMoveToOtherSide(panelLeftMeta.id, $event)">
+    </ds-file-panel>
+  </mat-card>
+  <mat-card class="file-commander"
+            fxFlex="50%">
+    <ds-file-panel  *ngIf="panelRightMeta"
+                    [fileItems]="panelRightMeta?.currentItems"
+                    [folderItems]="panelRightMeta?.allFolders"
+                    [path]="panelRightMeta?.currentPath" 
+                    [canNavigateUp]="panelRightMeta?.canNavigateUp"
+
+                    (folderAdded)="onAddFolder(panelRightMeta.id, $event)"
+                    (itemRemoved)="onRemoveItem(panelRightMeta.id, $event)" 
+                    (goDown)="onGoToFolder(panelRightMeta.id, $event)" 
+                    (goUp)="onGoUp(panelRightMeta.id)" 
+                    (itemRenamed)="onRenameItem(panelRightMeta.id, $event)"
+                    (itemMoved)="onMoveItem(panelRightMeta.id, $event)"
+                    (itemCopiedToOtherSide)="onCopyToOtherSide(panelRightMeta.id, $event)"
+                    (itemMovedToOtherSide)="onMoveToOtherSide(panelRightMeta.id, $event)">
+    </ds-file-panel>
+  </mat-card>
+</div>
