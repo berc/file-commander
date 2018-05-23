@@ -59,6 +59,9 @@
 .file-or-folder.max-item-height {
   max-height: 140px;
 }
+.file-or-folder__container {
+  position: relative;
+}
 
 .file-or-folder-icon-tile {
   width: 50px;

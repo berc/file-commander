@@ -38,7 +38,8 @@
             #menuTrigger="matMenuTrigger">
       </span>
       <div  fxLayout="{{viewType === ViewTypeEnum.LIST ? 'row nowrap' : 'column wrap'}}" 
-            fxLayoutAlign="space-between center" 
+            fxLayoutAlign="space-between center"
+            class="file-or-folder__container" 
             (click)="navigateDown(item)" 
             (contextmenu)="openMenu($event, menuTrigger)">
 
