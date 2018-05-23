@@ -6,13 +6,13 @@
     {{path || 'Files'}}
   </span>
   <span class="spacer"></span>
-  <mat-icon class="side-menu pointer" (click)="selectListView()">
+  <mat-icon class="side-menu pointer" title="List View" (click)="selectListView()">
     list
   </mat-icon>
-  <mat-icon class="side-menu pointer" (click)="selectTilesView()">
+  <mat-icon class="side-menu pointer" title="Tiles View" (click)="selectTilesView()">
     view_module
   </mat-icon>
-  <mat-icon class="side-menu pointer" (click)="openNewFolderDialog()">
+  <mat-icon class="side-menu pointer" title="Create Folder" (click)="openNewFolderDialog()">
     create_new_folder
   </mat-icon>
 </mat-toolbar>
