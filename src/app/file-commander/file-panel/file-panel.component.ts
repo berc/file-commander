@@ -10,7 +10,7 @@ import { NewFolderDialogComponent } from '../new-folder-dialog/new-folder-dialog
 import { RenameDialogComponent } from '../rename-dialog/rename-dialog.component';
 
 enum ViewTypeEnum {
-  LIST, TALES
+  LIST, TILES
 }
 
 @Component({
@@ -124,8 +124,8 @@ export class FilePanelComponent {
     this.viewType = ViewTypeEnum.LIST;
   }
 
-  selectTalesView() {
-    this.viewType = ViewTypeEnum.TALES;
+  selectTilesView() {
+    this.viewType = ViewTypeEnum.TILES;
   }
 
 }

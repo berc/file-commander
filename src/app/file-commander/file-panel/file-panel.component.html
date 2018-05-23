@@ -9,7 +9,7 @@
   <mat-icon class="side-menu pointer" (click)="selectListView()">
     list
   </mat-icon>
-  <mat-icon class="side-menu pointer" (click)="selectTalesView()">
+  <mat-icon class="side-menu pointer" (click)="selectTilesView()">
     view_module
   </mat-icon>
   <mat-icon class="side-menu pointer" (click)="openNewFolderDialog()">
@@ -44,7 +44,7 @@
 
         <mat-icon color="primary" 
                   class="pointer"
-                  [ngClass]="{'file-or-folder-icon-tale': viewType === ViewTypeEnum.TALES,
+                  [ngClass]="{'file-or-folder-icon-tile': viewType === ViewTypeEnum.TALES,
                     'file-or-folder-icon-list': viewType === ViewTypeEnum.LIST}">
           {{item.isFolder ? 'folder' : 'insert_drive_file'}}
         </mat-icon>
