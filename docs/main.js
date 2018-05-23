@@ -97,12 +97,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _file_commander_file_commander_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./file-commander/file-commander.module */ "./src/app/file-commander/file-commander.module.ts");
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
 /* harmony import */ var _state_reducers__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./state/reducers */ "./src/app/state/reducers.ts");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -124,7 +126,9 @@ var AppModule = /** @class */ (function () {
                 _file_commander_file_commander_module__WEBPACK_IMPORTED_MODULE_4__["FileCommanderModule"],
                 _ngrx_store__WEBPACK_IMPORTED_MODULE_3__["StoreModule"].forRoot({ panels: _state_reducers__WEBPACK_IMPORTED_MODULE_6__["fileCommanderReducer"] })
             ],
-            providers: [],
+            providers: [
+                { provide: _angular_common__WEBPACK_IMPORTED_MODULE_7__["APP_BASE_HREF"], useValue: '/file-commander' }
+            ],
             bootstrap: [
                 _app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]
             ]

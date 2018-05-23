@@ -8,6 +8,7 @@ import { FileCommanderModule } from './file-commander/file-commander.module';
 import { AppComponent } from './app.component';
 
 import { fileCommanderReducer } from './state/reducers';
+import { APP_BASE_HREF } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { fileCommanderReducer } from './state/reducers';
     StoreModule.forRoot({panels: fileCommanderReducer})
   ],
   providers: [
+    {provide: APP_BASE_HREF, useValue: '/file-commander'}
   ],
   bootstrap: [
     AppComponent
