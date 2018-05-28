@@ -4,8 +4,8 @@
   height: 100%;
   box-sizing: border-box;
   display: block;
-}
-
-:host .app {
-  height: 100%;
+  
+  .app {
+    height: 100%;
+  }
 }

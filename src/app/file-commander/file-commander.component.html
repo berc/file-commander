@@ -4,7 +4,7 @@
      fxLayoutGap="10px"
      fxLayoutGap.xs="0"
      class="container">
-  <mat-card class="file-commander"
+  <mat-card class="card"
             fxFlex="50%">
     <ds-file-panel  *ngIf="panelLeftMeta"
                     [fileItems]="panelLeftMeta?.currentItems"
@@ -24,7 +24,7 @@
                     (itemMovedToOtherSide)="onMoveToOtherSide(panelLeftMeta.id, $event)">
     </ds-file-panel>
   </mat-card>
-  <mat-card class="file-commander"
+  <mat-card class="card"
             fxFlex="50%">
     <ds-file-panel  *ngIf="panelRightMeta"
                     [fileItems]="panelRightMeta?.currentItems"

@@ -1,0 +1,14 @@
+:host {
+  height: 100%;
+
+  .container {
+    height: calc(100% - 60px);
+  }
+
+  .card {
+    min-width: 200px;
+    min-height: 200px;
+    padding: 0;
+    margin-bottom: 24px;
+  }
+}

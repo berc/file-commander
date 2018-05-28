@@ -16,7 +16,7 @@ enum ViewTypeEnum {
 @Component({
   selector: 'ds-file-panel',
   templateUrl: './file-panel.component.html',
-  styleUrls: ['./file-panel.component.css']
+  styleUrls: ['./file-panel.component.scss']
 })
 export class FilePanelComponent {
   private foldersMap: any;

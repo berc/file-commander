@@ -17,7 +17,7 @@ import { SelectFolder } from '../state/actions';
 @Component({
   selector: 'ds-file-commander',
   templateUrl: './file-commander.component.html',
-  styleUrls: ['./file-commander.component.css']
+  styleUrls: ['./file-commander.component.scss']
 })
 export class FileCommanderComponent implements OnInit {
   panelLeftMeta: FilePanelMeta;
